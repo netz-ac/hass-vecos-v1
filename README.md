@@ -39,6 +39,7 @@ Field    | Description | Default
 host	 | IP address or hostname of the hub |–
 port	 | TCP port  | 5000
 lock_count	 | Number of locks to expose (1‑16) | 16
+open_duration	 | Seconds a lock stays released after `lock.open` before it is locked again (1‑3600) | 5
 
 The lock_count option makes the integration flexible for hubs with fewer than 16 doors.
 
@@ -48,6 +49,8 @@ Entity type |	Entity ID pattern |	Description
 Lock |	lock.vecos_lock_<n>	| Lock # n (locked/unlocked)
 Switch |	switch.vecos_usb_power	| USB power on/off
 Binary sensor |	binary_sensor.vecos_connection_<n>	| Connection status for lock n
+
+`lock.open` releases the lock for `open_duration` seconds and then locks it again automatically, retrying if the hub is unreachable. `lock.unlock` keeps the lock unlocked until `lock.lock` is called. A lock that was open when Home Assistant restarted is restored as locked.
 
 
 ## Services
