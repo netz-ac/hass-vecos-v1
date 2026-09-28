@@ -6,3 +6,6 @@ PLATFORMS = ["binary_sensor", "switch", "lock"]
 SERVICE_OPEN_LOCKS = "open_locks"
 SERVICE_CLOSE_LOCKS = "close_locks"
 NUMBER_OF_LOCKS = "Number of Locks"
+OPEN_DURATION = "Open Duration (seconds)"
+DEFAULT_OPEN_DURATION = 5
+RELOCK_RETRY_INTERVAL = 5
