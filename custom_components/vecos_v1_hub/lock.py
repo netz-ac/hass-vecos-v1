@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from homeassistant.components.lock import LockEntity
+from homeassistant.components.lock import LockEntity, LockEntityFeature
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_HOST
 from homeassistant.core import HomeAssistant
@@ -26,6 +26,8 @@ async def async_setup_entry(
 
 
 class VecosLockEntity(CoordinatorEntity, RestoreEntity, LockEntity):
+    _attr_supported_features = LockEntityFeature.OPEN
+
     def __init__(
         self, coordinator: VecosV1HubCoordinator, entry: ConfigEntry, lock_id: int
     ) -> None:
